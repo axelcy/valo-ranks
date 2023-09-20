@@ -1,0 +1,39 @@
+[{
+  "URL": "https://api.henrikdev.xyz/valorant/v1/mmr/latam/CLG%20Manzana%20Roja/vsc",
+  "status": 200,
+  "data": {
+    "currenttier": 17,
+    "currenttierpatched": "Platinum 3",
+    "images": {
+      "small": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/17/smallicon.png",
+      "large": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/17/largeicon.png",
+      "triangle_down": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/17/ranktriangledownicon.png",
+      "triangle_up": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/17/ranktriangleupicon.png"
+    },
+    "ranking_in_tier": 10,
+    "mmr_change_to_last_game": 21,
+    "elo": 1410,
+    "name": "CLG Manzana Roja",
+    "tag": "vsc",
+    "old": false
+  }
+},
+{
+  "URL": "https://api.henrikdev.xyz/valorant/v1/account/CLG%20Manzana%20Roja/vsc",
+  "status": 200,
+  "data": {
+    "puuid": "b44826bc-ba3f-5988-b4fc-186535663b80",
+    "region": "na",
+    "account_level": 218,
+    "name": "CLG Manzana Roja",
+    "tag": "vsc",
+    "card": {
+      "small": "https://media.valorant-api.com/playercards/ab5a453a-f726-4e04-b277-f30d56a8b152/smallart.png",
+      "large": "https://media.valorant-api.com/playercards/ab5a453a-f726-4e04-b277-f30d56a8b152/largeart.png",
+      "wide": "https://media.valorant-api.com/playercards/ab5a453a-f726-4e04-b277-f30d56a8b152/wideart.png",
+      "id": "ab5a453a-f726-4e04-b277-f30d56a8b152"
+    },
+    "last_update": "8 minutes ago",
+    "last_update_raw": 1695243635
+  }
+}]
