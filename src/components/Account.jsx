@@ -19,7 +19,7 @@ function Account({ name }) {
                 setAccount(_account)
                 const _mmr = await new ValorantAPI(name).mmr()
                 setMmr(_mmr)
-                
+
                 firstSection.current.style.backgroundImage = `url(${_account.card.wide})`
                 rankTitle.current.style.color = tierColors[_mmr?.currenttierpatched]  
                 progress.current.style.width = `${_mmr?.ranking_in_tier}%`
@@ -40,7 +40,8 @@ function Account({ name }) {
                     <div className="last-mmr" ><span className="mmr-green">+{mmr.mmr_change_to_last_game}</span></div> : // hacer modulo
                     <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr.mmr_change_to_last_game)}</span></div>
                 }
-                
+                <div className="lastgame-text">Last Match</div>
+                {/* <div className="lastgame-text">Game</div> */}
             </div>
             <div className="inner-container">
                 <h3><a target="_blank" href={trackerUrl} draggable={false}>

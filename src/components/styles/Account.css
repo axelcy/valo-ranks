@@ -77,6 +77,15 @@ h3, a{
     color: var(--red);
 }
 
+.lastgame-text{
+    display: flex;
+    justify-content: center;
+    font-family: system-ui;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #969696;
+}
+
 .progress-container{
     width: 100%;
     display: flex;
