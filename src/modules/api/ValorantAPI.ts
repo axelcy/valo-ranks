@@ -11,9 +11,11 @@ export default class ValorantAPI {
         this.name = useUsername(name)
     }
     async account(){
+        if (!this.name) return
         return await useFetch(`/account/${this.name}`) as Promise<AccountResponse>
     }
     async mmr(){
+        if (!this.name) return
         return await useFetch(`/mmr/latam/${this.name}`) as Promise<MmrResponse>
     }
 }

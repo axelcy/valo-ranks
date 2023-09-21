@@ -4,19 +4,23 @@ import { tierColors, tierTranslations } from '../mocks/ranks'
 import useTrackerUrl from "../hooks/useTrackerUrl"
 import './styles/Account.css'
 
-function Account({ name, handleDelete }) {
+function Account({ name, deleteAccount, index }) {
     const [account, setAccount] = useState({})
     const [mmr, setMmr] = useState({})
     const trackerUrl = useTrackerUrl(name)
     const firstSection = useRef(null)
     const progress = useRef(null)
     const rankTitle = useRef(null)
+    const closeButton = useRef(null)
     
     useEffect(() => {
         const start = async () => {
+            // saqué el try catch y el response.ok en el useFetch
             try {
                 const _account = await new ValorantAPI(name).account()
-                if (_account.status === 404) return handleDelete()
+                if (_account?.status === 404 || _account === undefined) {
+                    return
+                }
                 setAccount(_account)
                 const _mmr = await new ValorantAPI(name).mmr()
                 setMmr(_mmr)
@@ -26,15 +30,16 @@ function Account({ name, handleDelete }) {
                 progress.current.style.width = `${_mmr?.ranking_in_tier}%`
             }
             catch (err) {
-                //
+
             }
         }
         start()
     }, [name])
 
+    // const handleDelete = () => deleteAccount()
     return (
         <article>
-            <svg onClick={handleDelete} xmlns="http://www.w3.org/2000/svg" class="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg ref={closeButton} onClick={deleteAccount} xmlns="http://www.w3.org/2000/svg" className="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M18 6l-12 12"></path>
                 <path d="M6 6l12 12"></path>
@@ -43,8 +48,8 @@ function Account({ name, handleDelete }) {
                 <img src={mmr?.images?.large} className="rank-image" draggable={false} />
                 {
                     mmr?.mmr_change_to_last_game > 0 ? 
-                    <div className="last-mmr" ><span className="mmr-green">+{mmr.mmr_change_to_last_game}</span></div> : // hacer modulo
-                    <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr.mmr_change_to_last_game)}</span></div>
+                    <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div> : // hacer modulo
+                    <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
                 }
                 <div className="lastgame-text">Last Match</div>
                 {/* <div className="lastgame-text">Game</div> */}

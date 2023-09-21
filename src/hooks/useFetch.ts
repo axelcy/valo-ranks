@@ -4,7 +4,8 @@ const API_URL = 'https://api.henrikdev.xyz/valorant/v1'
 export default async function useFetch(endpoint: string) {
     try {
         const response = await fetch(API_URL + endpoint)
-        if (!response.ok) throw new Error('Valorant API error :(')
+        // if (!response.ok) throw new Error('Valorant API error :(')
+        if (response?.status === 429) throw new Error('Rate Limited :-v')
         return (await response.json()).data
     }
     catch (error) {
