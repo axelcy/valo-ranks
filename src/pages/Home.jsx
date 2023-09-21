@@ -16,7 +16,7 @@ function Home() {
     const handleDelete = (index) => setAccounts([...accounts].filter((_, i) => i !== index))
     return (
         <main>
-            <h1 className="main-title no-select">Chinchu-Ranks v1.1</h1>
+            <h1 className="main-title no-select">Chinchu-Ranks v1.2</h1>
             <form className="flex justify-center" onSubmit={handleSubmit}>
                 <input className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />
             </form>

@@ -29,7 +29,7 @@ function Account({ name, handleDelete }) {
                 //
             }
         }
-        // start()
+        start()
     }, [name])
 
     return (
