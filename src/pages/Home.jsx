@@ -32,7 +32,7 @@ function Home() {
                 <button onClick={resetAccounts}>Borrar todas las cuentas</button>
                 <button onClick={setChinchulines}>Poner a los chinchulines</button>
             </header>
-            <h1 className="main-title no-select">Chinchu-Ranks v1.3</h1>
+            <h1 className="main-title no-select">Chinchu-Ranks v1.31</h1>
             <form className="flex justify-center" onSubmit={handleSubmit}>
                 <input autoComplete="false" className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />
             </form>
