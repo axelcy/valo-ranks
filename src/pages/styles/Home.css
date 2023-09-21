@@ -34,3 +34,10 @@ header{
     flex-direction: row;
     gap: 1rem
 }
+
+.title-container{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: .6rem;
+}
