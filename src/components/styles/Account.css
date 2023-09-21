@@ -1,6 +1,6 @@
 article{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     /* align-items: start; */
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.01);
@@ -8,10 +8,17 @@ article{
     border-radius: calc(10px + 0rem);
     border-bottom-left-radius: calc(10px + 0rem);
     border-bottom-right-radius: calc(10px + 0rem);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2.5px);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
     gap: 1rem;
+    position: relative;
+}
+.inner-container{
+    display: flex;
+    flex-direction: column;
 }
 .first-section{
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -22,6 +29,8 @@ article{
     min-height: 100px;
     /* min-width: 530px; */
     min-width: 353px;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, .2);
 }
 h3, a{
     font-size: 1.3rem;
@@ -31,10 +40,11 @@ h3, a{
 }
 
 .rank-image{
-    margin: auto;
-    height: 7rem;
+    /* margin: auto; */
+    height: 5rem;
 }
 .second-section{
+    width: 100%;
     margin-bottom: .5rem;
 }
 .rank-title{
@@ -47,14 +57,35 @@ h3, a{
     text-transform: uppercase;
     font-family: system-ui;
     margin-top: 1rem;
+    position: absolute;
+    bottom: -1rem;
+    left: 1rem;
+    filter: drop-shadow(0 0 1.1rem black);
 }
+.last-mmr{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: system-ui;
+}
+.mmr-green{
+    
+    color: var(--green);
+}
+.mmr-red{
+    color: var(--red);
+}
+
 .progress-container{
     width: 100%;
     display: flex;
     justify-content: center;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
 }
 .rank-progress-bar{
-    position: relative;
     background-color: rgba(255, 255, 255, .6);
     border-radius: 99px;
     overflow: hidden;
@@ -64,15 +95,16 @@ h3, a{
     margin: .5rem;
 }
 .rank-progress{
-    position: absolute;
     border-radius: 99px;
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #23fed7;
+    background-color: var(--green);
 }
 
 .rank-rating-container{
+    width: 100%;
+    /* position: absolute; */
     display: flex;
     padding: 0 .7rem;
     justify-content: space-between;
@@ -98,4 +130,11 @@ h3, a{
 .actual-rating{
     font-family: system-ui;
     color: #23fed7;
+}
+
+.progress-group{
+    width: 100%;
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
 }
