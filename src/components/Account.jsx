@@ -25,9 +25,6 @@ function Account({ name, deleteAccount, index }) {
                 const _mmr = await new ValorantAPI(name).mmr()
                 setMmr(_mmr)
                 setIsLoading(false)
-                firstSection.current.style.backgroundImage = `url(${_account.card.wide})`
-                rankTitle.current.style.color = tierColors[_mmr?.currenttierpatched]  
-                progress.current.style.width = `${_mmr?.ranking_in_tier}%`
             }
             catch (err) {
 
@@ -36,6 +33,12 @@ function Account({ name, deleteAccount, index }) {
         start()
     }, [name])
 
+    useEffect(() => {
+        if (isLoading) return
+        firstSection.current.style.backgroundImage = `url(${account?.card.wide})`
+        rankTitle.current.style.color = tierColors[mmr?.currenttierpatched]  
+        progress.current.style.width = `${mmr?.ranking_in_tier}%`
+    }, [isLoading])
     // const handleDelete = () => deleteAccount()
     return (
         <article>
