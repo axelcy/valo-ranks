@@ -7,9 +7,10 @@ function Home() {
     const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
     const handleSubmit = (e) => {
         e.preventDefault()
-        localStorage.setItem('accounts', JSON.stringify([...accounts, e.target.account.value]))
+        // verificar que exista antes de agregar
         setAccounts([...accounts, e.target.account.value])
         e.target.account.value = ''
+        localStorage.setItem('accounts', JSON.stringify([...accounts, e.target.account.value]))
     }
 
     const handleDelete = (index) => setAccounts([...accounts].filter((_, i) => i !== index))

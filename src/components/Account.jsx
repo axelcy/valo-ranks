@@ -16,6 +16,7 @@ function Account({ name, handleDelete }) {
         const start = async () => {
             try {
                 const _account = await new ValorantAPI(name).account()
+                if (_account.status === 404) return handleDelete()
                 setAccount(_account)
                 const _mmr = await new ValorantAPI(name).mmr()
                 setMmr(_mmr)
@@ -30,7 +31,7 @@ function Account({ name, handleDelete }) {
         }
         // start()
     }, [name])
-    
+
     return (
         <article>
             <svg onClick={handleDelete} xmlns="http://www.w3.org/2000/svg" class="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
