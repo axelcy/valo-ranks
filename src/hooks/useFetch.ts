@@ -5,7 +5,7 @@ export default async function useFetch(endpoint: string) {
     try {
         const response = await fetch(API_URL + endpoint)
         // if (!response.ok) throw new Error('Valorant API error :(')
-        if (response?.status === 429) throw new Error('Rate Limited :-v')
+        if (response?.status === 429) throw new Error('EXPLOTACIÓN DE LA API MUCHAS LLAMADAS :V')
         return (await response.json()).data
     }
     catch (error) {
