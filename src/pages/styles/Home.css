@@ -1,0 +1,8 @@
+main{
+    padding: 2rem;
+}
+
+.account-list{
+    display: flex;
+    margin: 1rem;
+}

@@ -1,0 +1,68 @@
+article{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: calc(10px + 1rem);
+    backdrop-filter: blur(5px);
+    gap: 1rem;
+}
+.first-section{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    background-size: cover;
+    min-height: 150px;
+    min-width: 530px;
+}
+.rank-image{
+    margin: auto;
+    height: 10rem;
+}
+.nametag{
+    color: #969696;
+}
+
+.second-section{
+    margin-bottom: 1rem;
+}
+.rank-title{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    width: 100%;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: system-ui;
+}
+.progress-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.rank-progress-bar{
+    position: relative;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 99px;
+    overflow: hidden;
+    /* width: 100%; */
+    flex: 1;
+    height: .5rem;
+    margin: .5rem;
+}
+.rank-progress{
+    position: absolute;
+    border-radius: 99px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #23fed7;
+}
+

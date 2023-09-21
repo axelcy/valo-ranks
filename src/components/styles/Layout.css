@@ -1,0 +1,16 @@
+nav{
+    position: sticky;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color4);
+    color: var(--color1);
+    /* background-color: transparent; */
+    /* height: 80px; */
+    padding: 0 2rem;
+    top: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    display: none;
+}
