@@ -11,6 +11,10 @@
   --red: #f0615f;
 }
 
+#root{
+  width: 100vw;
+}
+
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   /* font-family: 'Ubuntu'; */

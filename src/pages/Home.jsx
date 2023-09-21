@@ -1,19 +1,31 @@
+import { useState } from "react"
 import Account from "../components/Account"
 import './styles/Home.css'
+import defaultAccounts from "../mocks/accounts"
 
 function Home() {
-  return (
-    <main>
-      <h1 className="main-title no-select">Chinchu-Ranks v1.1</h1>
-      <section className="account-list no-select">
-        <Account name={'CLG Manzana Roja#vsc'} />
-        <Account name={'Fake Love#9977'} />
-        <Account name={'CLG TeiToTeo84#1815'} />
-        <Account name={'CLG Santik2010#TRUJO'} />
-        <Account name={'LAC Domix#640'} />
-      </section>
-    </main>
-  )
+    const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        localStorage.setItem('accounts', JSON.stringify([...accounts, e.target.account.value]))
+        setAccounts([...accounts, e.target.account.value])
+        e.target.account.value = ''
+    }
+
+    const handleDelete = (index) => setAccounts([...accounts].filter((_, i) => i !== index))
+    return (
+        <main>
+            <h1 className="main-title no-select">Chinchu-Ranks v1.1</h1>
+            <form className="flex justify-center" onSubmit={handleSubmit}>
+                <input className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />
+            </form>
+            <section className="account-list no-select">
+                {accounts?.map((account, index) => (
+                    <Account key={index} name={account} handleDelete={() => handleDelete(index)} />
+                ))}
+            </section>
+        </main>
+    )
 }
 
 export default Home
