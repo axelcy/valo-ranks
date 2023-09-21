@@ -12,20 +12,23 @@ function Account({ name }) {
     const progress = useRef(null)
     const rankTitle = useRef(null)
     
-    useEffect(() => async () => {
-        try {
-            const _account = await new ValorantAPI(name).account()
-            setAccount(_account)
-            const _mmr = await new ValorantAPI(name).mmr()
-            setMmr(_mmr)
-            // filter: contrast(0.5);
-            firstSection.current.style.backgroundImage = `url(${_account.card.wide})`
-            rankTitle.current.style.color = tierColors[_mmr?.currenttierpatched]  
-            progress.current.style.width = `${_mmr?.ranking_in_tier}%`
+    useEffect(() => {
+        const start = async () => {
+            try {
+                const _account = await new ValorantAPI(name).account()
+                setAccount(_account)
+                const _mmr = await new ValorantAPI(name).mmr()
+                setMmr(_mmr)
+                
+                firstSection.current.style.backgroundImage = `url(${_account.card.wide})`
+                rankTitle.current.style.color = tierColors[_mmr?.currenttierpatched]  
+                progress.current.style.width = `${_mmr?.ranking_in_tier}%`
+            }
+            catch (err) {
+                //
+            }
         }
-        catch (err) {
-            //
-        }
+        start()
     }, [name])
 
     return (
