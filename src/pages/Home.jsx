@@ -4,7 +4,7 @@ import './styles/Home.css'
 function Home() {
   return (
     <main>
-      <h1>ndqwidniasdnasldjasd aaplicacion</h1>
+      <h1 className="main-title no-select">Chinchu-Ranks</h1>
       <section className="account-list no-select">
         <Account name={'CLG Manzana Roja#vsc'} />
         <Account name={'Fake Love#9977'} />

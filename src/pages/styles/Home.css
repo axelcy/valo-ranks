@@ -8,4 +8,11 @@ main{
     flex-wrap: wrap;
     gap: 1rem;
     /* align-items: center; */
+    justify-content: center;
+}
+
+.main-title{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
 }
