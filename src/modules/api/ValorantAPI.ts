@@ -11,7 +11,6 @@ export default class ValorantAPI {
         this.name = useUsername(name)
     }
     async account(){
-        console.log('this.name', this.name)
         return await useFetch(`/account/${this.name}`) as Promise<AccountResponse>
     }
     async mmr(){

@@ -5,4 +5,7 @@ main{
 .account-list{
     display: flex;
     margin: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* align-items: center; */
 }
