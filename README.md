@@ -2,4 +2,4 @@
 
 Seguimiento de los rangos de Valorant. :p
 
-Url: [click](https://valo-ranks.netlify.app/)
+https://valo-ranks.netlify.app/
