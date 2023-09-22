@@ -1,3 +1,3 @@
-# Valorant Ranks
+# [Valorant Ranks](https://valo-ranks.netlify.app/)
 
-## Rangos de los Chinchulines Go
+Seguimiento de los rangos de Valorant. :p
