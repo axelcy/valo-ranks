@@ -31,7 +31,7 @@ function Home() {
                 <button onClick={setChinchulines}>Poner a los chinchulines</button>
             </header>
             <div className="title-container">
-                <h1 className="main-title no-select">Chinchu-Ranks</h1><h3 className="nametag">v{APP_VERSION}</h3>
+                <h1 className="main-title no-select">Chinchu Ranks</h1><h3 className="nametag">v{APP_VERSION}</h3>
             </div>
             <form className="flex justify-center pb-10" onSubmit={handleSubmit}>
                 <input autoComplete="off" className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />

@@ -9,11 +9,13 @@ function Account({ name, deleteAccount, index }) {
     const [account, setAccount] = useState({})
     const [mmr, setMmr] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+
     const trackerUrl = useTrackerUrl(name)
     const firstSection = useRef(null)
     const progress = useRef(null)
     const rankTitle = useRef(null)
     const closeButton = useRef(null)
+    const rankImage = useRef(null)
     
     useEffect(() => {
         const start = async () => {
@@ -33,8 +35,21 @@ function Account({ name, deleteAccount, index }) {
         start()
     }, [name])
 
+    const resizeEvent = () => {
+        if (window.innerWidth > 600) { // PANTALLA GRANDE
+            firstSection.current.style.minWidth = '353px'
+            rankImage.current.style.height = '5rem'
+        } else { // PANTALLA CHICA
+            firstSection.current.style.minWidth = '250px'
+            rankImage.current.style.height = ''
+
+        }
+    }
+    window.addEventListener('resize', resizeEvent)
+
     useEffect(() => {
         if (isLoading) return
+        resizeEvent()
         firstSection.current.style.backgroundImage = `url(${account?.card.wide})`
         rankTitle.current.style.color = tierColors[mmr?.currenttierpatched]  
         progress.current.style.width = `${mmr?.ranking_in_tier}%`
@@ -51,7 +66,7 @@ function Account({ name, deleteAccount, index }) {
                             <path d="M6 6l12 12"></path>
                         </svg>
                         <div>
-                            <img src={mmr?.images?.large} className="rank-image" draggable={false} />
+                            <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
                             {
                                 mmr?.mmr_change_to_last_game > 0 ?
                                     <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div> : // hacer modulo

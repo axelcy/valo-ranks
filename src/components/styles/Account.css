@@ -36,10 +36,8 @@ article{
     padding: 1rem;
     border-radius: 10px;
     background-size: cover;
-    /* min-height: 150px; */
     min-height: 100px;
-    /* min-width: 530px; */
-    min-width: 353px;
+    /* min-width: 353px; */
     position: relative;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, .2);
 }
@@ -52,7 +50,7 @@ h3, a{
 
 .rank-image{
     /* margin: auto; */
-    height: 5rem;
+    /* height: 5rem; */
 }
 .second-section{
     width: 100%;
@@ -95,6 +93,7 @@ h3, a{
     font-weight: 500;
     font-size: 1rem;
     color: #969696;
+    text-align: center;
 }
 
 .progress-container{
