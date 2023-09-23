@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import ValorantAPI from "../modules/api/ValorantAPI"
-import { tierColors, tierTranslations } from '../mocks/ranks'
+import { tierColors, tierTranslations } from '../mocks/ranks-colors'
 import useTrackerUrl from "../hooks/useTrackerUrl"
 import './styles/Account.css'
 import Loading from "./Loding"
@@ -24,6 +24,7 @@ function Account({ name, deleteAccount, index }) {
                 const _account = await new ValorantAPI(name).account()
                 // if (_account?.status === 404 || _account === undefined) return
                 setAccount(_account)
+                // Funciona para latam y br
                 const _mmr = await new ValorantAPI(name).mmr()
                 setMmr(_mmr)
                 setIsLoading(false)
