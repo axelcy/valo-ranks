@@ -30,7 +30,7 @@ function Account({ name, deleteAccount, index }) {
                 setIsLoading(false)
             }
             catch (err) {
-
+                
             }
         }
         start()
@@ -68,7 +68,7 @@ function Account({ name, deleteAccount, index }) {
                     <div>
                         <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
                         {
-                            mmr?.mmr_change_to_last_game > 0 ?
+                            mmr?.mmr_change_to_last_game >= 0 ?
                                 <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div> : // hacer modulo
                                 <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
                         }

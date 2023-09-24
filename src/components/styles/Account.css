@@ -16,12 +16,23 @@ article{
     min-height: 100px;
     min-width: 353px;
 }
+article:hover{
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, .5);
+    transition: all .4s ease-out;
+}
+
 .close-account{
     position: absolute;
     color: var(--red);
     filter: saturate(130%);
     top: 1rem;
     right: 1rem;
+    cursor: pointer;
+}
+
+.close-account:hover{
+    transform: scale(1.5);
+    transition: all .1s ease-out;
 }
 
 .inner-container{
