@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import ValorantAPI from "../modules/api/ValorantAPI"
-import { tierColors, tierTranslations } from '../mocks/ranks-colors'
+import { tierColors, tierTranslations, unrankedData } from '../mocks/ranks-colors'
 import useTrackerUrl from "../hooks/useTrackerUrl"
 import './styles/Account.css'
 import Loading from "./Loding"
@@ -12,6 +12,7 @@ function Account({ name, deleteAccount, index }) {
     const [account, setAccount] = useState({})
     const [mmr, setMmr] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [isUnranked, setIsUnranked] = useState(false)
 
     const firstSection = useRef(null)
     const progress = useRef(null)
@@ -27,6 +28,7 @@ function Account({ name, deleteAccount, index }) {
             if (_account === undefined) return
             setAccount(_account)
             const _mmr = await new ValorantAPI(name).mmr()
+            if (_mmr.elo === null) setIsUnranked(true)
             setMmr(_mmr)
             setIsLoading(false)
         }
@@ -36,8 +38,8 @@ function Account({ name, deleteAccount, index }) {
     useEffect(() => {
         if (isLoading) return
         firstSection.current.style.backgroundImage = `url(${account?.card.wide})`
-        rankTitle.current.style.color = tierColors[mmr?.currenttierpatched]  
-        progress.current.style.width = `${mmr?.ranking_in_tier}%`
+        rankTitle.current.style.color = isUnranked ? unrankedData.color : tierColors[mmr?.currenttierpatched]
+        progress.current.style.width = isUnranked ? `${unrankedData.rank_points}%` : `${mmr?.ranking_in_tier}%`
     }, [isLoading])
 
     return (
@@ -53,20 +55,30 @@ function Account({ name, deleteAccount, index }) {
                 <>
                     
                     <div>
-                        <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
                         {
-                            mmr?.mmr_change_to_last_game >= 0 ?
-                                <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div> : // hacer modulo
-                                <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
+                            isUnranked ? 
+                            <>
+                                <img ref={rankImage} src={'unranked.png'} className="rank-image" draggable={false} />
+                            </>
+                            :
+                            <>
+                                <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
+                                {
+                                
+                                    mmr?.mmr_change_to_last_game >= 0  ?
+                                        <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div> : // hacer modulo
+                                        <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
+                                }
+                                <div className="lastgame-text">Last Match</div>
+                            </>
                         }
-                        <div className="lastgame-text">Last Match</div>
                     </div>
                     <div className="inner-container">
                         <h3><a target="_blank" href={trackerUrl} draggable={false}>
                             {account?.name}<span className="nametag">#{account?.tag}</span></a>
                         </h3>
                         <section className="first-section" ref={firstSection}>
-                            <div className="rank-title" ref={rankTitle}>{tierTranslations[mmr?.currenttierpatched]}</div>
+                            <div className="rank-title" ref={rankTitle}>{isUnranked ? unrankedData.rank : tierTranslations[mmr?.currenttierpatched]}</div>
                         </section>
                         <section className="second-section">
                             <div className="progress-container">

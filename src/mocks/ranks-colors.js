@@ -1,3 +1,9 @@
+export const unrankedData = {
+	rank: 'Unranked',
+	color: '#c2c2c2',
+	rank_points: 0
+}
+
 export const tierColors = {
 	'Iron 1': '#838283',
 	'Iron 2': '#838283',
