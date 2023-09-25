@@ -6,15 +6,7 @@ import WavesBackground from './components/WavesBackground'
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path='/' element={<Layout />}>
-    //       <Route index element={<Home/>} />
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
     <Home />
-    // <WavesBackground />
   )
 }
 
