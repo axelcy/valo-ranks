@@ -2,9 +2,10 @@ import { useState } from "react"
 import Account from "../components/Account"
 import './styles/Home.css'
 import defaultAccounts from "../mocks/accounts"
+import WavesBackground from "../components/WavesBackground"
 
 function Home() {
-    const APP_VERSION = '1.5.0'
+    const APP_VERSION = '1.5.1'
     const [accounts, setAccountsState] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
 
     const setAccounts = newAccounts => {
@@ -41,6 +42,7 @@ function Home() {
                     <Account key={index} index={index} name={account} deleteAccount={() => deleteAccount(index, account)} />
                 ))}
             </section>
+            <WavesBackground />
         </main>
     )
 }

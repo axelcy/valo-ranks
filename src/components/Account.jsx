@@ -23,7 +23,6 @@ function Account({ name, deleteAccount, index }) {
     useEffect(() => {
         const start = async () => {
             const _account = await new ValorantAPI(name).account()
-            console.log(_account)
             // if (_account === undefined) closeUndefined.current.click()
             if (_account === undefined) return
             setAccount(_account)
