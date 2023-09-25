@@ -4,7 +4,7 @@ import './styles/Home.css'
 import defaultAccounts from "../mocks/accounts"
 
 function Home() {
-    const APP_VERSION = '1.4.0'
+    const APP_VERSION = '1.4.1'
     const [accounts, setAccountsState] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
 
     const setAccounts = newAccounts => {
