@@ -1,3 +1,22 @@
+.first-section{
+    min-width: 353px;
+    min-height: 100px;
+}
+.rank-image{
+    height: 5rem;
+}
+
+@media (width < 600px) {
+    .first-section{
+        min-width: 250px;
+        max-height: 71px;
+    }
+    .rank-image{
+        height: auto;
+        max-height: 5rem;
+    }
+}
+
 article{
     display: flex;
     flex-direction: row;
@@ -31,7 +50,7 @@ article:hover{
 }
 
 .close-account:hover{
-    transform: scale(1.5);
+    transform: scale(1.25);
     transition: all .1s ease-out;
 }
 
@@ -47,7 +66,7 @@ article:hover{
     padding: 1rem;
     border-radius: 10px;
     background-size: cover;
-    min-height: 100px;
+    /* min-height: 100px; */
     /* min-width: 353px; */
     position: relative;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, .2);
@@ -60,7 +79,6 @@ h3, a{
 }
 
 .rank-image{
-    /* margin: auto; */
     /* height: 5rem; */
 }
 .second-section{

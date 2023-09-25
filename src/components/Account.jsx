@@ -36,20 +36,8 @@ function Account({ name, deleteAccount, index }) {
         start()
     }, [name])
 
-    const resizeEvent = () => {
-        if (window.innerWidth > 600) { // PANTALLA GRANDE
-            firstSection.current.style.minWidth = '353px'
-            rankImage.current.style.height = '5rem'
-        } else { // PANTALLA CHICA
-            firstSection.current.style.minWidth = '250px'
-            rankImage.current.style.height = ''
-        }
-    }
-    window.addEventListener('resize', resizeEvent)
-
     useEffect(() => {
         if (isLoading) return
-        resizeEvent()
         firstSection.current.style.backgroundImage = `url(${account?.card.wide})`
         rankTitle.current.style.color = tierColors[mmr?.currenttierpatched]  
         progress.current.style.width = `${mmr?.ranking_in_tier}%`
