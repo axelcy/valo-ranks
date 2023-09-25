@@ -4,7 +4,7 @@ import './styles/Home.css'
 import defaultAccounts from "../mocks/accounts"
 
 function Home() {
-    const APP_VERSION = '1.4.1'
+    const APP_VERSION = '1.5.0'
     const [accounts, setAccountsState] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
 
     const setAccounts = newAccounts => {
@@ -16,7 +16,7 @@ function Home() {
 
     const resetAccounts = () => setAccounts([])
 
-    const setChinchulines = () => setAccounts(defaultAccounts)
+    const setDefaultAccounts = () => setAccounts(defaultAccounts)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -28,7 +28,7 @@ function Home() {
         <main>
             <header>
                 <button onClick={resetAccounts}>Borrar todas las cuentas</button>
-                <button onClick={setChinchulines}>Poner a los chinchulines</button>
+                <button onClick={setDefaultAccounts}>Poner cuentas de prueba</button>
             </header>
             <div className="title-container">
                 <h1 className="main-title no-select">Chinchu Ranks</h1><h3 className="nametag no-select">v{APP_VERSION}</h3>

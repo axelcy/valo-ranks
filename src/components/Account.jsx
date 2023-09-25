@@ -6,32 +6,30 @@ import './styles/Account.css'
 import Loading from "./Loding"
 
 function Account({ name, deleteAccount, index }) {
+
+    const trackerUrl = useTrackerUrl(name)
+
     const [account, setAccount] = useState({})
     const [mmr, setMmr] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-    const trackerUrl = useTrackerUrl(name)
     const firstSection = useRef(null)
     const progress = useRef(null)
     const rankTitle = useRef(null)
     const closeButton = useRef(null)
     const rankImage = useRef(null)
+    const closeUndefined = useRef(null)
     
     useEffect(() => {
         const start = async () => {
-            // saqué el try catch y el response.ok en el useFetch
-            try {
-                const _account = await new ValorantAPI(name).account()
-                // if (_account?.status === 404 || _account === undefined) return
-                setAccount(_account)
-                // Funciona para latam y br
-                const _mmr = await new ValorantAPI(name).mmr()
-                setMmr(_mmr)
-                setIsLoading(false)
-            }
-            catch (err) {
-                
-            }
+            const _account = await new ValorantAPI(name).account()
+            console.log(_account)
+            // if (_account === undefined) closeUndefined.current.click()
+            if (_account === undefined) return
+            setAccount(_account)
+            const _mmr = await new ValorantAPI(name).mmr()
+            setMmr(_mmr)
+            setIsLoading(false)
         }
         start()
     }, [name])
@@ -45,14 +43,16 @@ function Account({ name, deleteAccount, index }) {
 
     return (
         <article>
+            <button onClick={deleteAccount} className="hidden" ref={closeUndefined}></button>
+            <svg ref={closeButton} onClick={deleteAccount} xmlns="http://www.w3.org/2000/svg" className="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M18 6l-12 12"></path>
+                <path d="M6 6l12 12"></path>
+            </svg>
             {
                 isLoading ? <Loading /> :
                 <>
-                    <svg ref={closeButton} onClick={deleteAccount} xmlns="http://www.w3.org/2000/svg" className="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M18 6l-12 12"></path>
-                        <path d="M6 6l12 12"></path>
-                    </svg>
+                    
                     <div>
                         <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
                         {
