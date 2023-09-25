@@ -5,7 +5,9 @@
 .rank-image{
     height: 5rem;
 }
-
+h3, a{
+    font-size: 1.3rem;
+}
 @media (width < 600px) {
     .first-section{
         min-width: 250px;
@@ -14,6 +16,9 @@
     .rank-image{
         height: auto;
         max-height: 5rem;
+    }
+    h3, a{
+        font-size: 1.1rem;
     }
 }
 
@@ -73,9 +78,7 @@ article:hover{
     position: relative;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, .2);
 }
-h3, a{
-    font-size: 1.3rem;
-}
+
 .nametag{
     color: #969696;
 }
