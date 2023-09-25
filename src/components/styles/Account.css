@@ -47,6 +47,35 @@ article:hover{
     box-shadow: 0px 0px 30px rgba(255, 255, 255, .5);
 }
 
+.account-copied{
+    stroke: var(--green);
+    fill: rgba(255, 255, 255, .2);
+    /* fill: rgba(0, 0, 0, .2); */
+}
+.copy-account-name{
+    position: absolute;
+    /* color: var(--red); */
+    /* filter: saturate(130%); */
+    top: -.3rem;
+    right: -1.5rem;
+    cursor: pointer;
+    transform: scale(0.8);
+}
+.copy-account-name:hover{
+    transform: scale(1);
+    transition: all .1s ease-out;
+}
+.name-container{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+}
+
+.name-container > h3{
+    width: fit-content;
+}
+
 .close-account{
     position: absolute;
     color: var(--red);
@@ -100,7 +129,7 @@ article:hover{
     position: absolute;
     bottom: -1rem;
     left: 1rem;
-    filter: drop-shadow(0 0 1.1rem black);
+    filter: drop-shadow(0 0 1.4rem black);
 }
 .last-mmr{
     display: flex;
@@ -110,11 +139,13 @@ article:hover{
     font-family: system-ui;
 }
 .mmr-green{
-    
     color: var(--green);
 }
 .mmr-red{
     color: var(--red);
+}
+.mmr-cero{
+    color: #e0e0e0;
 }
 
 .lastgame-text{
