@@ -8,6 +8,14 @@
 h3, a{
     font-size: 1.3rem;
 }
+.article-loading{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.name-loading{
+    font-size: 1.3rem;
+}
 @media (width < 600px) {
     .first-section{
         min-width: 250px;
@@ -20,9 +28,13 @@ h3, a{
     h3, a{
         font-size: 1.1rem;
     }
+    .name-loading{
+        font-size: 1.1rem;
+    }
 }
 
 article{
+    width: 481px;
     display: flex;
     flex-direction: row;
     /* align-items: start; */
@@ -40,13 +52,17 @@ article{
     min-height: 100px;
     min-width: 353px;
     
-    transition: all .4s ease-out;
     z-index: 999;
 }
 article:hover{
     box-shadow: 0px 0px 30px rgba(255, 255, 255, .5);
+    transition: all .4s ease-out;
 }
-
+@media (width < 600px) {
+    article{
+        width: 378px;
+    }
+}
 .account-copied{
     stroke: var(--green);
     fill: rgba(255, 255, 255, .2);
