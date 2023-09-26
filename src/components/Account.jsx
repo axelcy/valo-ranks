@@ -4,6 +4,7 @@ import { tierColors, tierTranslations, unrankedData } from '../mocks/ranks-color
 import useTrackerUrl from "../hooks/useTrackerUrl"
 import './styles/Account.css'
 import Loading from "./Loding"
+import { stringify } from "postcss"
 
 function Account({ name, deleteAccount, index }) {
 
@@ -40,7 +41,8 @@ function Account({ name, deleteAccount, index }) {
 
     const handlePasteName = () => {
         setIsCopied(true)
-        navigator.clipboard.writeText(`${account?.name}#${account?.tag}`)
+        // navigator.clipboard.writeText(`${account?.name}#${account?.tag}`)
+        navigator.clipboard.writeText(name)
     }
 
     useEffect(() => {
