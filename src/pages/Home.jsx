@@ -4,8 +4,9 @@ import './styles/Home.css'
 import defaultAccounts from "../mocks/accounts"
 import WavesBackground from "../components/WavesBackground"
 
+const APP_VERSION = '1.6.3'
+
 function Home() {
-    const APP_VERSION = '1.6.2'
     const [accounts, setAccountsState] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
 
     const setAccounts = newAccounts => {
