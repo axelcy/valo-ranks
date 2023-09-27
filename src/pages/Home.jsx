@@ -4,7 +4,7 @@ import './styles/Home.css'
 import defaultAccounts from "../mocks/accounts"
 import WavesBackground from "../components/WavesBackground"
 
-const APP_VERSION = '1.6.3'
+// const APP_VERSION = '1.6.3'
 
 function Home() {
     const [accounts, setAccountsState] = useState(JSON.parse(localStorage.getItem('accounts')) || [])
@@ -33,7 +33,7 @@ function Home() {
                 <button onClick={setDefaultAccounts}>Poner cuentas de prueba</button>
             </header>
             <div className="title-container">
-                <h1 className="main-title no-select">Chinchu Ranks</h1><h3 className="nametag no-select">v{APP_VERSION}</h3>
+                <h1 className="main-title no-select">Chinchu Ranks</h1><h3 className="nametag no-select">v{import.meta.env.VITE_APP_VERION}</h3>
             </div>
             <form className="flex justify-center pb-10" onSubmit={handleSubmit}>
                 <input autoComplete="off" className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />
