@@ -28,7 +28,7 @@ function Home() {
 
     return (
         <main>
-            <header>
+            <header className="buttons-container">
                 <button onClick={resetAccounts}>Borrar todas las cuentas</button>
                 <button onClick={setMappedAccounts}>Poner cuentas de prueba</button>
             </header>

@@ -73,7 +73,7 @@ function Account({ name, closeAccount, index }) {
                         isUnranked ?
                         <img ref={rankImage} src={'unranked.png'} className="rank-image" draggable={false} />
                         :
-                        <div>
+                        <aside>
                             <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
                             {
                                 mmr?.mmr_change_to_last_game > 0 ? // Ganó
@@ -83,11 +83,11 @@ function Account({ name, closeAccount, index }) {
                                 : // Empató
                                 <div className="last-mmr"><span className="mmr-cero">+{mmr?.mmr_change_to_last_game}</span></div>
                             }
-                            <div className="lastgame-text">Last Match</div>
-                        </div>
+                           <span className="lastgame-text">Last Match</span>
+                        </aside>
                     }
                     <div className="inner-container">
-                        <div className="name-container">
+                        <header className="name-container">
                             <h3><a target="_blank" href={trackerUrl} draggable={false}>
                                 {account?.name}<span className="nametag">#{account?.tag}</span></a>
                             </h3>
@@ -96,13 +96,13 @@ function Account({ name, closeAccount, index }) {
                                 <CopyName onClick={handlePasteName} /> :
                                 <NameCopied onClick={handlePasteName} />
                             }
-                        </div>
-                        <section className="first-section" ref={firstSection}>
+                        </header>
+                        <div className="account-card" ref={firstSection}>
                             <div className="rank-title" ref={rankTitle}>
                                 {isUnranked ? unrankedData.rank : tierTranslations[mmr?.currenttierpatched]}
                             </div>
-                        </section>
-                        <section className="second-section">
+                        </div>
+                        <footer className="account-footer">
                             <div className="progress-container">
                                 <div className="rank-progress-bar">
                                     <div ref={progress} className="rank-progress"></div>
@@ -112,7 +112,7 @@ function Account({ name, closeAccount, index }) {
                                 <p className="rank-rating-text">RANK RATING</p>
                                 <p className="rank-rating"><span className="actual-rating">{mmr?.ranking_in_tier ?? '0'}</span> / 100</p>
                             </div>
-                        </section>
+                        </footer>
                     </div>
                 </>
             }
