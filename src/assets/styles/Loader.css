@@ -8,9 +8,10 @@
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     margin: 1rem;
-  }
-  .loader::after {
-    content: '';  
+}
+
+.loader::after {
+    content: '';
     box-sizing: border-box;
     position: absolute;
     left: 50%;
@@ -21,13 +22,14 @@
     border-radius: 50%;
     border: 3px solid;
     border-color: #FF3D00 transparent;
-  }
-  
-  @keyframes rotation {
+}
+
+@keyframes rotation {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  } 
+}

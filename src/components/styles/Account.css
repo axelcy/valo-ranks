@@ -63,24 +63,7 @@ article:hover{
         width: 378px;
     }
 }
-.account-copied{
-    stroke: var(--green);
-    fill: rgba(255, 255, 255, .2);
-    /* fill: rgba(0, 0, 0, .2); */
-}
-.copy-account-name{
-    position: absolute;
-    /* color: var(--red); */
-    /* filter: saturate(130%); */
-    top: -.3rem;
-    right: -1.5rem;
-    cursor: pointer;
-    transform: scale(0.8);
-}
-.copy-account-name:hover{
-    transform: scale(1);
-    transition: all .1s ease-out;
-}
+
 .name-container{
     position: relative;
     display: flex;
@@ -92,19 +75,7 @@ article:hover{
     width: fit-content;
 }
 
-.close-account{
-    position: absolute;
-    color: var(--red);
-    filter: saturate(130%);
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-}
 
-.close-account:hover{
-    transform: scale(1.25);
-    transition: all .1s ease-out;
-}
 
 .inner-container{
     display: flex;

@@ -3,10 +3,10 @@ import ValorantAPI from "../modules/api/ValorantAPI"
 import { tierColors, tierTranslations, unrankedData } from '../mocks/ranks-colors'
 import useTrackerUrl from "../hooks/useTrackerUrl"
 import './styles/Account.css'
-import Loading from "./Loding"
-import { stringify } from "postcss"
+import { CloseAccount, CopyName, NameCopied } from "../assets/Icons"
+import Loader from "../assets/Loader"
 
-function Account({ name, deleteAccount, index }) {
+function Account({ name, closeAccount, index }) {
 
     const trackerUrl = useTrackerUrl(name)
 
@@ -15,7 +15,6 @@ function Account({ name, deleteAccount, index }) {
     const [isLoading, setIsLoading] = useState(true)
     const [isUnranked, setIsUnranked] = useState(false)
     const [isCopied, setIsCopied] = useState(false)
-
 
     const firstSection = useRef(null)
     const progress = useRef(null)
@@ -27,7 +26,6 @@ function Account({ name, deleteAccount, index }) {
     useEffect(() => {
         const start = async () => {
             const _account = await new ValorantAPI(name).account()
-            // if (_account === undefined) closeUndefined.current.click()
             if (_account === undefined) return
             setAccount(_account)
             const _mmr = await new ValorantAPI(name).mmr()
@@ -41,8 +39,7 @@ function Account({ name, deleteAccount, index }) {
 
     const handlePasteName = () => {
         setIsCopied(true)
-        // navigator.clipboard.writeText(`${account?.name}#${account?.tag}`)
-        navigator.clipboard.writeText(name)
+        navigator.clipboard.writeText(name) // `${account?.name}#${account?.tag}`
     }
 
     useEffect(() => {
@@ -54,92 +51,70 @@ function Account({ name, deleteAccount, index }) {
 
     return (
         <article>
-            <button onClick={deleteAccount} className="hidden" ref={closeUndefined}></button>
-            <svg ref={closeButton} onClick={deleteAccount} xmlns="http://www.w3.org/2000/svg" className="close-account icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M18 6l-12 12"></path>
-                <path d="M6 6l12 12"></path>
-            </svg>
+            <button onClick={closeAccount} className="hidden" ref={closeUndefined}></button>
+            <CloseAccount ref={closeButton} onClick={closeAccount} />
             {
-                isLoading ? <div className="article-loading">
-                <div><Loading /></div>
-                <div className="name-container">
-                                <h3 className="name-loading">{name.split('#')[0]}<span className="nametag">#{name.split('#')[1]}</span></h3>
-                                {
-                                    !isCopied ?
-                                    <svg onClick={handlePasteName} className="copy-account-name icon icon-tabler icon-tabler-copy" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path>
-                                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
-                                    </svg> :
-                                    <svg onClick={handlePasteName} className="account-copied copy-account-name icon icon-tabler icon-tabler-clipboard-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
-                                        <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
-                                        <path d="M9 14l2 2l4 -4"></path>
-                                    </svg>
-                                }
-                            </div>
-                            <div className="inner-container">
-
-                </div>
+                isLoading ? 
+                <div className="article-loading">
+                    <div><Loader /></div>
+                    <div className="name-container">
+                        <h3 className="name-loading">
+                            {name.split('#')[0]}<span className="nametag">#{name.split('#')[1]}</span>
+                        </h3>
+                        {
+                            !isCopied ?
+                            <CopyName onClick={handlePasteName} /> :
+                            <NameCopied onClick={handlePasteName} />
+                        }
+                    </div>
                 </div> :
-                    <>
-
+                <>
+                    {
+                        isUnranked ?
+                        <img ref={rankImage} src={'unranked.png'} className="rank-image" draggable={false} />
+                        :
                         <div>
-                            {isUnranked ?
-                                <>
-                                    <img ref={rankImage} src={'unranked.png'} className="rank-image" draggable={false} />
-                                </>
-                                :
-                                <>
-                                    <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
-                                    {
-                                        mmr?.mmr_change_to_last_game > 0 ?
-                                        <div className="last-mmr" ><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div>
-                                        : mmr?.mmr_change_to_last_game < 0 ?
-                                        <div className="last-mmr" ><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
-                                        : <div className="last-mmr" ><span className="mmr-cero">+{mmr?.mmr_change_to_last_game}</span></div>
-                                    }
-                                    <div className="lastgame-text">Last Match</div>
-                                </>}
+                            <img ref={rankImage} src={mmr?.images?.large} className="rank-image" draggable={false} />
+                            {
+                                mmr?.mmr_change_to_last_game > 0 ? // Ganó
+                                <div className="last-mmr"><span className="mmr-green">+{mmr?.mmr_change_to_last_game}</span></div>
+                                : mmr?.mmr_change_to_last_game < 0 ? // Perdió
+                                <div className="last-mmr"><span className="mmr-red">-{Math.abs(mmr?.mmr_change_to_last_game)}</span></div>
+                                : // Empató
+                                <div className="last-mmr"><span className="mmr-cero">+{mmr?.mmr_change_to_last_game}</span></div>
+                            }
+                            <div className="lastgame-text">Last Match</div>
                         </div>
-                        <div className="inner-container">
-                            <div className="name-container">
-                                <h3><a target="_blank" href={trackerUrl} draggable={false}>
-                                    {account?.name}<span className="nametag">#{account?.tag}</span></a>
-                                </h3>
-                                {
-                                    !isCopied ?
-                                    <svg onClick={handlePasteName} className="copy-account-name icon icon-tabler icon-tabler-copy" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path>
-                                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
-                                    </svg> :
-                                    <svg onClick={handlePasteName} className="account-copied copy-account-name icon icon-tabler icon-tabler-clipboard-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
-                                        <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
-                                        <path d="M9 14l2 2l4 -4"></path>
-                                    </svg>
-                                }
+                    }
+                    <div className="inner-container">
+                        <div className="name-container">
+                            <h3><a target="_blank" href={trackerUrl} draggable={false}>
+                                {account?.name}<span className="nametag">#{account?.tag}</span></a>
+                            </h3>
+                            {
+                                !isCopied ?
+                                <CopyName onClick={handlePasteName} /> :
+                                <NameCopied onClick={handlePasteName} />
+                            }
+                        </div>
+                        <section className="first-section" ref={firstSection}>
+                            <div className="rank-title" ref={rankTitle}>
+                                {isUnranked ? unrankedData.rank : tierTranslations[mmr?.currenttierpatched]}
                             </div>
-                            <section className="first-section" ref={firstSection}>
-                                <div className="rank-title" ref={rankTitle}>{isUnranked ? unrankedData.rank : tierTranslations[mmr?.currenttierpatched]}</div>
-                            </section>
-                            <section className="second-section">
-                                <div className="progress-container">
-                                    <div className="rank-progress-bar">
-                                        <div ref={progress} className="rank-progress"></div>
-                                    </div>
+                        </section>
+                        <section className="second-section">
+                            <div className="progress-container">
+                                <div className="rank-progress-bar">
+                                    <div ref={progress} className="rank-progress"></div>
                                 </div>
-                                <div className="rank-rating-container">
-                                    <p className="rank-rating-text">RANK RATING</p>
-                                    <p className="rank-rating"><span className="actual-rating">{mmr?.ranking_in_tier ?? '0'}</span> / 100</p>
-                                </div>
-                            </section>
-                        </div>
-                    </>
+                            </div>
+                            <div className="rank-rating-container">
+                                <p className="rank-rating-text">RANK RATING</p>
+                                <p className="rank-rating"><span className="actual-rating">{mmr?.ranking_in_tier ?? '0'}</span> / 100</p>
+                            </div>
+                        </section>
+                    </div>
+                </>
             }
         </article>
     )
