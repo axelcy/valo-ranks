@@ -23,6 +23,11 @@ function Account({ name, closeAccount, index }) {
     const rankImage = useRef(null)
     const closeUndefined = useRef(null)
 
+    const handlePasteName = () => {
+        setIsCopied(true)
+        navigator.clipboard.writeText(name) // `${account?.name}#${account?.tag}`
+    }
+    
     useEffect(() => {
         const start = async () => {
             const _account = await new ValorantAPI(name).account()
@@ -36,11 +41,6 @@ function Account({ name, closeAccount, index }) {
         }
         start()
     }, [name])
-
-    const handlePasteName = () => {
-        setIsCopied(true)
-        navigator.clipboard.writeText(name) // `${account?.name}#${account?.tag}`
-    }
 
     useEffect(() => {
         if (isLoading) return
