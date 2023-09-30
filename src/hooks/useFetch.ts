@@ -1,4 +1,4 @@
-export default async function useFetch(endpoint: string) {
+export default async function useFetch(endpoint: string): Promise<any> {
     try {
         const response = await fetch(import.meta.env.VITE_API_URL + endpoint)
         // if (!response.ok) throw new Error('Valorant API error :(')
