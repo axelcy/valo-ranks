@@ -66,5 +66,11 @@ main{
 .no-accounts-msg > span{
     cursor: pointer;
     filter: drop-shadow(0 0 .1rem white);
+    transition: all .1s ease-out;
+}
+
+.no-accounts-msg > span:hover{
+    /* transform: scale(1.25); */
+    font-size: 1.5em;
 }
 
