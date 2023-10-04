@@ -29,3 +29,19 @@
     transform: scale(1);
     transition: all .1s ease-out;
 }
+
+.sad-face-icon{
+    --tamaño: 18rem;
+    height: var(--tamaño);
+    width: var(--tamaño);
+    margin: auto;
+    stroke-width: 1.7;
+}
+.trash-can{
+    stroke: lightcoral;
+}
+.trash-can:hover{
+    stroke: crimson;
+    transform: scale(1.25);
+    transition: all .1s ease-out;
+}

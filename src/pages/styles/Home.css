@@ -53,3 +53,18 @@ main{
     align-items: baseline;
     gap: .6rem;
 }
+
+.no-accounts-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.no-accounts-msg{
+    font-size: 1.2rem;
+}
+
+.no-accounts-msg > span{
+    cursor: pointer;
+    filter: drop-shadow(0 0 .1rem white);
+}
+
