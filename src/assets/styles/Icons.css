@@ -39,9 +39,23 @@
 }
 .trash-can{
     stroke: lightcoral;
+    user-select: none;
+    outline: none;
+    transition: all .1s ease-out;
 }
 .trash-can:hover{
     stroke: crimson;
     transform: scale(1.25);
-    transition: all .1s ease-out;
 }
+
+/* .trash-can:hover::after {
+    content: attr(title);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+} */
