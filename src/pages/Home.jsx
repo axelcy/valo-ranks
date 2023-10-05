@@ -45,7 +45,8 @@ function Home() {
                     )) :
                     <div className="no-accounts-container">
                         <SadFace />
-                        <p className="no-accounts-msg">Parece que no tienes cuentas... Prueba <span onClick={setMappedAccounts}>agregar algunas!</span></p>
+                        <p className="no-accounts-msg">Parece que no tienes cuentas...</p>
+                        <p className="no-accounts-msg agregar-cuentas" onClick={setMappedAccounts}>Prueba agregar algunas!</p>
                     </div>
                 }
             </section>

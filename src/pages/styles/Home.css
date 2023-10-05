@@ -58,18 +58,19 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .no-accounts-msg{
     font-size: 1.2rem;
 }
 
-.no-accounts-msg > span{
+.agregar-cuentas{
     cursor: pointer;
-    filter: drop-shadow(0 0 .1rem white);
+    filter: drop-shadow(0 0 .1rem rgba(255, 255, 255, .75));
     transition: all .1s ease-out;
 }
 
-.no-accounts-msg > span:hover{
+.agregar-cuentas:hover{
     /* transform: scale(1.25); */
     font-size: 1.5em;
 }
