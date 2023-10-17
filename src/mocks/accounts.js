@@ -1,5 +1,5 @@
 const defaultAccounts = [
-    'CLG Manzana Roja#vsc',
+    'CLG Manzana Roja#love',
     // 'Fake Love#9977',
     // 'CLG TeiToTeo84#1815',
     'CLG Santik2010#TRUJO',
