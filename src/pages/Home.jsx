@@ -36,7 +36,7 @@ function Home() {
             </div>
             <form className="main-form flex justify-center pb-10 gap-5 items-center" onSubmit={handleSubmit}>
                 { accounts.length > 0 && <TrashCan onClick={resetAccounts} content="Eliminar cuentas" /> }
-                <input autoComplete="off" className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#vsc" />
+                <input autoComplete="off" className="search-bar no-select w-1/3 rounded-full px-5 py-3" name="account" type="text" placeholder="CLG Manzana Roja#love" />
             </form>
             <section className="account-list no-select">
                 {
